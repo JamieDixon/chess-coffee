@@ -31,7 +31,7 @@ const CageLetters = () => {
     setBestAttempts((n) => (attempts > n ? attempts : n));
   }, [attempts]);
 
-  const clickHandler = (type) => () => {
+  const clickHandler = (type: number) => () => {
     const isWin = type === isOdd;
     setAttempts((n) => (isWin ? n + 1 : 0));
     setLetter(letters[Math.floor(Math.random() * 8)]);
@@ -84,7 +84,7 @@ const CageLettersAndNumbers = () => {
 
   const answer = isLetterOdd === isNumberOdd ? 1 : 0;
 
-  const clickHandler = (type) => () => {
+  const clickHandler = (type: number) => () => {
     setAttempts((n) => {
       if (type === answer) {
         return n + 1;
@@ -126,7 +126,7 @@ const CageLettersAndNumbers = () => {
   );
 };
 
-const Game = ({ children }) => {
+const Game = ({ children }: any) => {
   return (
     <Box padding={4} background="green.400" borderRadius="lg">
       {children}
@@ -134,7 +134,7 @@ const Game = ({ children }) => {
   );
 };
 
-const Square = ({ bg, children }) => {
+const Square = ({ bg, children }: any) => {
   return (
     <Stack
       background={bg}
@@ -194,7 +194,7 @@ const Method = () => {
           Odd-Odd, then the square is always Dark, otherwise its Light.
         </Text>
       </Stack>
-      <SimpleGrid columns={2} rows={2} columnGap={0} width="300px">
+      <SimpleGrid columns={2} columnGap={0} width="300px">
         <Square bg="blue.500">Odd-Odd</Square>
         <Square bg="yellow.100">Odd-Even</Square>
         <Square bg="yellow.100">Even-Odd</Square>
@@ -238,7 +238,7 @@ const Diagonals = () => {
 
   const nextNumber = findNextNumber();
 
-  const clickHandler = (answer) => {
+  const clickHandler = (answer: boolean) => {
     const { isDiagonal } = nextNumber;
     setAttempts((n) => (isDiagonal === answer ? n + 1 : 0));
     setLetter(letters[Math.floor(Math.random() * 8)]);
